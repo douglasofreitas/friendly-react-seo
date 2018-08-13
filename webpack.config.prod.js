@@ -19,6 +19,7 @@ var browserConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "true",
       __bundle__: "'bundle.js.gz'",
+      __enviroment__: "'prod'"
     }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
@@ -53,6 +54,7 @@ var serverConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "false",
       __bundle__: "'bundle.js.gz'",
+      __enviroment__: "'prod'"
     }),
     new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),

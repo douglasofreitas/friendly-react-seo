@@ -18,6 +18,7 @@ var browserConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "true",
       __bundle__: "'bundle.js'",
+      __enviroment__: "'dev'"
     })
   ],
   node: {
@@ -43,6 +44,7 @@ var serverConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "false",
       __bundle__: "'bundle.js'",
+      __enviroment__: "'dev'"
     })
   ],
   node: {
