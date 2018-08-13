@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var nodeExternals = require('webpack-node-externals')
+var CompressionPlugin = require('compression-webpack-plugin');
 
 var browserConfig = {
   entry: './src/browser/index.js',
@@ -17,7 +18,16 @@ var browserConfig = {
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: "true",
-      __bundle__: "'bundle.js'",
+      __bundle__: "'bundle.js.gz'",
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
+    new CompressionPlugin({
+      asset: "[path].gz[query]",
+      algorithm: "gzip",
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ],
   node: {
@@ -42,8 +52,10 @@ var serverConfig = {
   plugins: [
     new webpack.DefinePlugin({
       __isBrowser__: "false",
-      __bundle__: "'bundle.js'",
-    })
+      __bundle__: "'bundle.js.gz'",
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.AggressiveMergingPlugin(),
   ],
   node: {
     fs: "empty"

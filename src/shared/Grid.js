@@ -9,7 +9,6 @@ class Grid extends Component {
       repos = window.__INITIAL_DATA__.repos
       delete window.__INITIAL_DATA__
     } else {
-      console.log(props.staticContext);
       repos = props.staticContext.data.repos
     }
 

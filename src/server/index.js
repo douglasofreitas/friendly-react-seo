@@ -6,6 +6,7 @@ import React from 'react'
 import serialize from "serialize-javascript"
 import { StaticRouter, matchPath } from "react-router-dom"
 import routes from '../shared/routes'
+import config from '../config'
 
 const app = express()
 
@@ -48,7 +49,7 @@ app.get("*", (req, res, next) => {
       <!DOCTYPE html>
       <html>
         <head>
-          <script src="/bundle.js" defer></script>
+          <script src="/${__bundle__}" defer></script>
           <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
           ${metaTags}
         </head>
@@ -60,8 +61,8 @@ app.get("*", (req, res, next) => {
     `)
   }).catch(next)
 
-})
+});
 
-app.listen(3000, () => {
-  console.log(`Server is listening on port: 3000`)
+app.listen(config.port, () => {
+  console.log(`Server is listening on port: ${config.port}`)
 })
