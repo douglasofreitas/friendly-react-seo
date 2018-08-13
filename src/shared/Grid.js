@@ -6,10 +6,11 @@ class Grid extends Component {
 
     let repos
     if (__isBrowser__) {
-      repos = window.__INITIAL_DATA__
+      repos = window.__INITIAL_DATA__.repos
       delete window.__INITIAL_DATA__
     } else {
-      repos = props.staticContext.data
+      console.log(props.staticContext);
+      repos = props.staticContext.data.repos
     }
 
     this.state = {
@@ -38,8 +39,8 @@ class Grid extends Component {
     }))
 
     this.props.fetchInitialData(lang)
-      .then((repos) => this.setState(() => ({
-        repos,
+      .then((data) => this.setState(() => ({
+        repos: data.repos,
         loading: false,
       })))
   }

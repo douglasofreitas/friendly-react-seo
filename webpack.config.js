@@ -18,7 +18,10 @@ var browserConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "true"
     })
-  ]
+  ],
+  node: {
+    fs: "empty"
+  }
 }
 
 var serverConfig = {
@@ -39,7 +42,10 @@ var serverConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "false"
     })
-  ]
+  ],
+  node: {
+    fs: "empty"
+  }
 }
 
 module.exports = [browserConfig, serverConfig]

@@ -32,13 +32,25 @@ app.get("*", (req, res, next) => {
     </StaticRouter>
     )
 
+    let metaTags = `
+      <title>$OG_TITLE</title>
+      <meta property="og:title"       content="$OG_TITLE" />
+      <meta name="description"        content="$OG_DESCRIPTION" />
+      <meta property="og:description" content="$OG_DESCRIPTION" />
+      <meta property="og:image"       content="$OG_IMAGE" />`;
+    
+    //fill meta tags
+    if (data.metaTitle) metaTags = metaTags.replace(/\$OG_TITLE/g, data.metaTitle);
+    if (data.metaDescription) metaTags = metaTags.replace(/\$OG_DESCRIPTION/g, data.metaDescription);
+    if (data.metaImage) metaTags = metaTags.replace(/\$OG_IMAGE/g, data.metaImage);
+
     res.send(`
       <!DOCTYPE html>
       <html>
         <head>
-          <title>React App - SEO friendly</title>
           <script src="/bundle.js" defer></script>
           <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
+          ${metaTags}
         </head>
 
         <body>

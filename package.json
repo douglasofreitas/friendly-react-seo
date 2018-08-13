@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack -w & nodemon server.js",
+    "build": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Douglas Freitas (douglasofreitas@gmail.com)",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "cors": "^2.8.4",
+    "dotenv": "^6.0.0",
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.2.0",
