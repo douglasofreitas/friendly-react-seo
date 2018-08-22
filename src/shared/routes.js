@@ -61,7 +61,8 @@ const routes =  [
           metaImage: config.appImage
         })
       });
-    }
+    },
+    private: true
   }
 ]
 

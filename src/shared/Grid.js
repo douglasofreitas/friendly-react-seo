@@ -6,8 +6,10 @@ class Grid extends Component {
 
     let repos
     if (__isBrowser__) {
-      repos = window.__INITIAL_DATA__.repos
-      delete window.__INITIAL_DATA__
+      if (window.__INITIAL_DATA__) {
+        repos = window.__INITIAL_DATA__.repos
+        delete window.__INITIAL_DATA__
+      }
     } else {
       repos = props.staticContext.data.repos
     }
