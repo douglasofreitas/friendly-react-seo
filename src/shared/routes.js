@@ -1,5 +1,7 @@
 import Home from './Home'
 import Grid from './Grid'
+import Login from './Login'
+import Private from './Private'
 import { fetchPopularRepos } from './api'
 import config from '../config';
 
@@ -33,6 +35,32 @@ const routes =  [
           });
         });
       })
+    }
+  },
+  {
+    path: '/login',
+    component: Login,
+    fetchInitialData: (path = '') => {
+      return new Promise(resolve => {
+        resolve({
+          metaTitle: config.appTitle,
+          metaDescription: config.appDescription,
+          metaImage: config.appImage
+        })
+      });
+    }
+  },
+  {
+    path: '/private',
+    component: Private,
+    fetchInitialData: (path = '') => {
+      return new Promise(resolve => {
+        resolve({
+          metaTitle: config.appTitle,
+          metaDescription: config.appDescription,
+          metaImage: config.appImage
+        })
+      });
     }
   }
 ]

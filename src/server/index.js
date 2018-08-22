@@ -13,7 +13,7 @@ const app = express()
 app.use(cors())
 
 app.get('*.js', (req, res, next) => {
-  if (__enviroment__ === 'prod') {
+  if (__enviroment__ === 'prod' && req.acceptsEncodings('gzip')) {
     req.url = req.url + '.gz';
     res.set('Content-Encoding', 'gzip');
     res.set('Content-Type', 'text/javascript');
@@ -68,10 +68,7 @@ app.get("*", (req, res, next) => {
         </html>
       `)
     }).catch(next)
-
   }
-
-  
 });
 
 // We're going to serve up the public

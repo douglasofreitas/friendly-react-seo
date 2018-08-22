@@ -28,6 +28,21 @@ export default function Navbar () {
           </NavLink>
         </li>
       ))}
+      <li>
+        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/login`}>
+          LOGIN
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/private`}>
+          PRIVATE
+        </NavLink>
+      </li>
+      <li>
+        <NavLink activeStyle={{fontWeight: 'bold'}} to={`/`}>
+          HOME
+        </NavLink>
+      </li>
     </ul>
   )
 }
