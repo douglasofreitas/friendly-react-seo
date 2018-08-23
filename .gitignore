@@ -1,5 +1,6 @@
 node_modules
 .env
+public/index.html
 public/bundle.js
 public/bundle.js.gz
 server.js

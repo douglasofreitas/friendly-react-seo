@@ -1,6 +1,7 @@
 var path = require('path')
 var webpack = require('webpack')
 var nodeExternals = require('webpack-node-externals')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
 
 var browserConfig = {
   entry: './src/browser/index.js',
@@ -19,7 +20,10 @@ var browserConfig = {
       __isBrowser__: "true",
       __bundle__: "'bundle.js'",
       __enviroment__: "'dev'"
-    })
+    }),
+    new CopyWebpackPlugin([
+      { from:'index.html', to:'index.html' }
+    ], {})
   ],
   node: {
     fs: "empty"
